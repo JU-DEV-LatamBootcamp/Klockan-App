@@ -16,7 +16,7 @@ Follow these steps to initialize and update the submodules:
 
 1. Add a submodule: ```git submodule add git@github.com:<github-username>/<repository-name>.git```
 2. Init the submodule: ```git submodule init``` *This registers the paths to the repositories.*
-3. Update the submodule: ```git submodule update``` *This updates the module with the latest changes from each repository.*
+3. Update the submodule: ```git submodule update --remote``` *This updates the module with the latest changes from each repository.*
 4. Access the submodule: ```cd <repository-name>```
    
 
