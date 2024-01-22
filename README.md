@@ -34,13 +34,13 @@ When adding the submodule, a .gitmodules file is created, example::
 	url = git@github.com:JU-DEV-LatamBootcamp/Klockan-Backend.git
 ```
 
-*To go to a specific branch within a submodule, specify it like this:*
+*To target a specific branch within a submodule, specify it like this:*
 
 ```
 [submodule "Klockan-Frontend"]
-	path = Klockan-Frontend
-	url = git@github.com:JU-DEV-LatamBootcamp/Klockan-Frontend.git
-  branch = develop
+    path = Klockan-Frontend
+    url = git@github.com:JU-DEV-LatamBootcamp/Klockan-Frontend.git
+    branch = develop
 ```
 
 Feel free to explore each submodule repository for more detailed information and development details.
