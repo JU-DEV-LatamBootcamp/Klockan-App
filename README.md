@@ -43,5 +43,4 @@ When adding the submodule, a .gitmodules file is created, example::
     branch = develop
 ```
 
-Feel free to explore each submodule repository for more detailed information and development details.
 
