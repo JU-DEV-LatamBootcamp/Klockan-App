@@ -20,8 +20,11 @@ jobs:
       run: |
         ssh-agent -a $SSH_AUTH_SOCK > /dev/null  
         ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
-    - name: Git login
-      run: git login
+    - name: Set who I am
+      run: |
+        git config --global user.email "nicolas.schleicher@jala.university"
+        git config --global user.name "NicolasSCJala"
+        git config --global url."git@github.com:".insteadOf "https://github.com/"
     - name: Init submodule
       run: git submodule init
     - name: update submodule to lates change
