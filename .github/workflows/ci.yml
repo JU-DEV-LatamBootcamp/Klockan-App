@@ -14,16 +14,23 @@ jobs:
     environment: secrets
     steps:
     - uses: actions/checkout@v3
+    - name: Setup SSH Keys and known_hosts
+      env:
+        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      run: |
+        ssh-agent -a $SSH_AUTH_SOCK > /dev/null  
+        ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
+    - name: Init submodule
+      run: git submodule init
+    - name: update submodule to lates change
+      run: git submodule update --remote
     - name: Login Dockerhub
         
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_HUB_USERNAME}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_HUB_PASSWORD}}
       run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    - name: Init submodule
-      run: git submodule init
-    - name: update submodule to lates change
-      run: git submodule update --remote
+   
     - name: Build the Docker image
       run: docker-compose build
     - name: Push to Dockerhub
