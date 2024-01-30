@@ -20,7 +20,8 @@ jobs:
         DOCKER_USERNAME: ${{secrets.DOCKER_HUB_USERNAME}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_HUB_PASSWORD}}
       run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-
+    - name: Init submodule
+      run: git submodule init
     - name: Build the Docker image
       run: docker-compose build
     - name: Push to Dockerhub
