@@ -3,8 +3,6 @@ name: Docker Image CI
 on:
   push:
     branches: [ "develop" ]
-  pull_request:
-    branches: [ "develop" ]
 
 jobs:
   
@@ -20,6 +18,8 @@ jobs:
       run: |
         ssh-agent -a $SSH_AUTH_SOCK > /dev/null  
         ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
+    - name: Git login
+      run: git login
     - name: Init submodule
       run: git submodule init
     - name: update submodule to lates change
