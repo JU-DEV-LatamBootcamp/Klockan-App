@@ -26,5 +26,13 @@ jobs:
    
     - name: Build the Docker image
       run: docker-compose build
-    - name: Push to Dockerhub
-      run: docker push klockan/cicd-pipeline:latest
+    - name: See images
+      run: docker images
+  ##  - name: Tag the Docker image DB
+  ##    run: docker tag klockan-backend:v1 klockan/backendapp:v1.0
+
+##    - name: Build the Docker image
+##    - name: Build the Docker image
+##    - name: Push to Dockerhub
+##      run: docker push klockan/cicd-pipeline:latest
+        
