@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with: 
-        token: ${{ secrets.PERSONAL_TOKEN }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
     - name: Set who I am
       run: |
         git config --global user.email "nicolas.schleicher@jala.university"
