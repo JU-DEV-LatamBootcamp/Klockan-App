@@ -9,11 +9,13 @@ on:
 jobs:
   
   build:
-
+  
     runs-on: ubuntu-latest
     environment: secrets
     steps:
     - uses: actions/checkout@v3
+      with: 
+        token: ${{ secrets.PERSONAL_TOKEN }}
     - name: Set who I am
       run: |
         git config --global user.email "nicolas.schleicher@jala.university"
