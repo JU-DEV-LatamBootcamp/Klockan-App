@@ -15,14 +15,15 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with: 
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        toke: ${{ secrets.PERSONAL_TOKEN }}
     - name: Init submodule
       run: git submodule init
- ##   - name: update submodule to lates change     
- ##     run:
- ##       git config --global user.email "nicolas.schleicher@jala.university"
-  ##      git config --global user.name "NicolasSCJala" 
-  ##      git submodule update --remote
+    - name: update submodule to lates change     
+      run:
+        git config --global user.email "nicolas.schleicher@jala.university"
+        git config --global user.name "NicolasSCJala" 
+        git submodule update --remote
     - name: Login Dockerhub
         
       env:
