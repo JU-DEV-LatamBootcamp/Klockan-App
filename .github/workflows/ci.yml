@@ -27,9 +27,9 @@ jobs:
     - name: Build the Docker image
       run: docker-compose build
     - name: Tagin back
-      run: docker push klockan-backend:v1 klockan/cicd-pipeline:v1 
+      run: docker tag klockan-backend:v1 klockan/cicd-pipeline:v1 
     - name: Tagin front
-      run: docker push klockan-front:v1 klockan/cicd-pipeline:v1 
+      run: docker tag klockan-front:v1 klockan/cicd-pipeline:v1 
     - name: See images 
       run: docker push klockan/cicd-pipeline:v1 
 
