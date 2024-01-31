@@ -28,8 +28,8 @@ jobs:
       run: docker-compose build
     - name: See images
       run: docker images
-    - name: Tag the Docker postgres
-      run: docker tag postgres:latest klockan/postgres:v1.0
+  ##  - name: Tag the Docker postgres
+  ##    run: docker tag postgres:latest klockan/postgres:v1.0
     - name: Push to Dockerhub
       run: docker push klockan/cicd-pipeline:v1
     - name: Push to Dockerhub Keyclock
