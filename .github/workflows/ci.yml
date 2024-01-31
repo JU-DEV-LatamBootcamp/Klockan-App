@@ -15,10 +15,8 @@ jobs:
     - name: Init submodule
       run: git submodule init
     - name: update submodule to lates change     
-      run:
-        git config user.email "Nicolas.Schleicher@jala.university"
-        git config user.name "NicolasSCJala"
-        git submodule update --remote
+      run: git submodule update --init --recursive
+
         
     - name: Login Dockerhub
       env:
