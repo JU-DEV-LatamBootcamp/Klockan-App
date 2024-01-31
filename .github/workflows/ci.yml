@@ -13,11 +13,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Git clone Back
-    - run: git clone https://github.com/JU-DEV-LatamBootcamp/Klockan-Backend.git
+      run: git clone https://github.com/JU-DEV-LatamBootcamp/Klockan-Backend.git
     - name: Git clone Keycloak
-    - run: git clone https://github.com/JU-DEV-LatamBootcamp/Klockan-Keycloak.git
+      run: git clone https://github.com/JU-DEV-LatamBootcamp/Klockan-Keycloak.git
     - name: Git clone Front
-    - run: git clone https://github.com/JU-DEV-LatamBootcamp/Klockan-Frontend.git    
+      run: git clone https://github.com/JU-DEV-LatamBootcamp/Klockan-Frontend.git    
     - name: Login Dockerhub
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_HUB_USERNAME}}
