@@ -7,25 +7,21 @@ on:
     branches: [ "develop","main" ]
 
 jobs:
-  
   build:
-  
     runs-on: ubuntu-latest
     environment: secrets
     steps:
     - uses: actions/checkout@v3
-      with: 
-        ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
-        token: ${{ secrets.PERSONAL_TOKEN }}
     - name: Init submodule
       run: git submodule init
     - name: update submodule to lates change     
       run:
-        git config --global user.email "nicolas.schleicher@jala.university"
-        git config --global user.name "NicolasSCJala" 
+        git config --global user.email "Nicolas.Schleicher@jala.university"
+        git config --global user.name "NicolasSCJala"
+        git config --global url."git@github.com:".insteadOf "https://github.com/"
         git submodule update --remote
-    - name: Login Dockerhub
         
+    - name: Login Dockerhub
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_HUB_USERNAME}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_HUB_PASSWORD}}
