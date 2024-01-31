@@ -29,7 +29,7 @@ jobs:
     - name: Tagin back
       run: docker tag klockan-backend:v1 klockan/cicd-pipeline:v1 
     - name: Tagin front
-      run: docker tag klockan-front:v1 klockan/cicd-pipeline:v1 
+      run: docker tag klockan-frontend:v1 klockan/cicd-pipeline:v1 
     - name: See images 
       run: docker push klockan/cicd-pipeline:v1 
 
