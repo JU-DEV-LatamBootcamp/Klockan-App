@@ -12,6 +12,10 @@ jobs:
     environment: secrets
     steps:
     - uses: actions/checkout@v3
+    - name: Git clone
+    - run: git clone https://github.com/JU-DEV-LatamBootcamp/Klockan-App.git
+    - name: Enter file
+    - run: cd Klockan-App
     - name: Init submodule
       run: git submodule init
     - name: update submodule to lates change     
