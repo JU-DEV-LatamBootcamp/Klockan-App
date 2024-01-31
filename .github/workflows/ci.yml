@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v3
       with: 
         ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
-        toke: ${{ secrets.PERSONAL_TOKEN }}
+        token: ${{ secrets.PERSONAL_TOKEN }}
     - name: Init submodule
       run: git submodule init
     - name: update submodule to lates change     
