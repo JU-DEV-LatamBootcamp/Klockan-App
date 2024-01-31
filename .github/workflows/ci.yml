@@ -27,7 +27,7 @@ jobs:
     - name: Build the Docker image
       run: docker-compose build
     - name: See images
-      run: docker push klockan/cicd-pipeline
+      run: docker push klockan/cicd-pipeline:v1
 
     
         
