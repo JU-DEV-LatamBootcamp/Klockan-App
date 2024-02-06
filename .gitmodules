@@ -2,11 +2,3 @@
 	path = Klockan-Keycloak
 	url = https://github.com/JU-DEV-LatamBootcamp/Klockan-Keycloak.git
 	branch = develop
-[submodule "Klockan-Frontend"]
-	path = Klockan-Frontend
-	url = https://github.com/JU-DEV-LatamBootcamp/Klockan-Frontend.git
-	branch = develop
-[submodule "Klockan-Backend"]
-	path = Klockan-Backend
-	url = https://github.com/JU-DEV-LatamBootcamp/Klockan-Backend.git
-	branch = develop

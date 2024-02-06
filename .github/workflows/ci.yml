@@ -2,36 +2,23 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "develop" ]
-  pull_request:
-    branches: [ "develop","main" ]
+    branches: ['develop']
 
 jobs:
   build:
     runs-on: ubuntu-latest
     environment: secrets
     steps:
-    - uses: actions/checkout@v3
-    - name: Git clone Back
-      run: git clone https://github.com/JU-DEV-LatamBootcamp/Klockan-Backend.git
-    - name: Git clone Keycloak
-      run: git clone https://github.com/JU-DEV-LatamBootcamp/Klockan-Keycloak.git
-    - name: Git clone Front
-      run: git clone https://github.com/JU-DEV-LatamBootcamp/Klockan-Frontend.git    
-    - name: Login Dockerhub
-      env:
-        DOCKER_USERNAME: ${{secrets.DOCKER_HUB_USERNAME}}
-        DOCKER_PASSWORD: ${{secrets.DOCKER_HUB_PASSWORD}}
-      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-   
-    - name: Build the Docker image
-      run: docker-compose build
-    - name: Tagin back
-      run: docker tag klockan-backend:v1 klockan/cicd-pipeline:v1 
-    - name: Tagin front
-      run: docker tag klockan-frontend:v1 klockan/cicd-pipeline:v1 
-    - name: See images 
-      run: docker push klockan/cicd-pipeline:v1 
+      - uses: actions/checkout@v3
+      - name: Git clone Keycloak
+        run: git clone https://github.com/JU-DEV-LatamBootcamp/Klockan-Keycloak.git
+      - name: Login Dockerhub
+        env:
+          DOCKER_USERNAME: ${{secrets.DOCKER_HUB_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_HUB_PASSWORD}}
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
-    
-        
+      - name: Build the Docker image
+        run: docker-compose build
+      - name: See images
+        run: docker push klockan/cicd-pipeline:v1
