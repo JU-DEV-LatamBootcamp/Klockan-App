@@ -1,24 +1,23 @@
-name: Docker Image CI
+name: Deploy to Amazon ECS
 
 on:
   push:
-    branches: ['develop']
+    branches: [ "try" ]
 
 jobs:
-  build:
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
-    environment: secrets
+    environment: production
     steps:
-      - uses: actions/checkout@v3
-      - name: Git clone Keycloak
-        run: git clone https://github.com/JU-DEV-LatamBootcamp/Klockan-Keycloak.git
-      - name: Login Dockerhub
-        env:
-          DOCKER_USERNAME: ${{secrets.DOCKER_HUB_USERNAME}}
-          DOCKER_PASSWORD: ${{secrets.DOCKER_HUB_PASSWORD}}
-        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    - name: Checkout the files
+      uses: actions/checkout@v2
 
-      - name: Build the Docker image
-        run: docker-compose build
-      - name: See images
-        run: docker push klockan/cicd-pipeline:v1
+    - name: Executing remote ssh commands using ssh key
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.ASW_HOST_DNS }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.AWS_SSH_KEY }}
+        script: |
+            sudo docker image ls
