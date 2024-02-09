@@ -1,34 +1,23 @@
-name: Push-to-EC2
+name: Deploy
 
-# Trigger deployment only on push to main branch
 on:
   push:
-    branches:
-      - try
-      
+    branches: [ develop ]
+
 jobs:
-  deploy:
-    name: Deploy to EC2 on master branch push
+  Deploy:
+    name: Deploy to EC2
     runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout the files
-        uses: actions/checkout@v2
-
-      - name: Deploy to Server 1
-        uses: easingthemes/ssh-deploy@main
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.AWS_SSH_KEY }}
-          REMOTE_HOST: ${{ secrets.ASW_HOST_DNS }}
-          REMOTE_USER: ${{ secrets.USERNAME }}
     
-
-      - name: Executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.ASW_HOST_DNS }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.AWS_SSH_KEY }}
-          script: |
-            sudo docker image ls
-
+    steps:
+      - uses: actions/checkout@v2 
+      - name: Build & Deploy
+        env:
+            PRIVATE_KEY: ${{ secrets.AWS_SSH_KEY }}
+            HOSTNAME: ${{secrets.ASW_HOST_DNS}}
+            USER_NAME: ${{secrets.USER_NAME}}
+        run: |
+              echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+              ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
+    
+                  sudo docker image ls
