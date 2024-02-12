@@ -20,10 +20,14 @@ jobs:
 
             
             run: |
-               echo "${{ secrets.AWS_SSH_KEY }}" | tr -d '\r' > klockan-kp.pem
-               chmod 400 klockan-kp.pem
-               ssh -tt -i "klockan-kp.pem" ubuntu@ec2-3-12-136-199.us-east-2.compute.amazonaws.com
-                 sudo exit 0
+              echo "$EC2_SSH_PRIVATE_KEY" > private_key && chmod 600 private_key
+              ssh -o StrictHostKeyChecking=no -i private_key ${EC2_USERNAME}@${EC2_URL} '
+                sudo exit 0
+            
+            #   echo "${{ secrets.AWS_SSH_KEY }}" | tr -d '\r' > klockan-kp.pem
+            #   chmod 400 klockan-kp.pem
+            #   ssh -tt -i "klockan-kp.pem" ubuntu@ec2-3-12-136-199.us-east-2.compute.amazonaws.com
+            #     sudo exit 0
 
         
     
