@@ -24,7 +24,7 @@ jobs:
                chmod 400 klockan-kp.pem
                ssh -tt -i "klockan-kp.pem" ubuntu@ec2-3-12-136-199.us-east-2.compute.amazonaws.com
                yes
-                 docker image ls
+               exit
 
         
     
