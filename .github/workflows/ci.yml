@@ -23,7 +23,7 @@ jobs:
                echo "${{ secrets.AWS_SSH_KEY }}" | tr -d '\r' > klockan-kp.pem
                chmod 400 klockan-kp.pem
                ssh -tt -i "klockan-kp.pem" ubuntu@ec2-3-12-136-199.us-east-2.compute.amazonaws.com
-               exit
+                 sudo exit 0
 
         
     
