@@ -22,7 +22,7 @@ jobs:
             run: |
                echo "${{ secrets.AWS_SSH_KEY }}" | tr -d '\r' > klockan-kp.pem
                chmod 400 klockan-kp.pem
-               ssh -t  -i "klockan-kp.pem" ubuntu@ec2-3-12-136-199.us-east-2.compute.amazonaws.com
+               ssh -t:  -i "klockan-kp.pem" ubuntu@ec2-3-12-136-199.us-east-2.compute.amazonaws.com
                yes
                     docker image ls
         
