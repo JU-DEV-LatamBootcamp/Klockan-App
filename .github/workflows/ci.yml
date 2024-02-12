@@ -14,7 +14,7 @@ jobs:
       EC2_USERNAME: ${{ secrets.USERNAME }}
     steps:
     - name: Create pem file
-      run: echo "${{ secrets.SSH_KEY }}" | tr -d '\r' > klockan-kp.pem
+      run: echo "${{ secrets.AWS_SSH_KEY }}" | tr -d '\r' > klockan-kp.pem
     - name: Garantizar que la clave no se pueda ver públicamente.
       run: chmod 400 klockan-kp.pem
     - name: SHH client coneect
