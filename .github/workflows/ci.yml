@@ -8,14 +8,11 @@ jobs:
   Deploy:
     name: Deploy to EC2
     runs-on: ubuntu-latest
-    
+   
     steps:
-      - uses: actions/checkout@v2 
-      - name: Build & Deploy
-        env:
-            PRIVATE_KEY: ${{ secrets.AWS_SSH_KEY }}
-            HOSTNAME: ${{secrets.ASW_HOST_DNS}}
-            USER_NAME: ${{secrets.USERNAME}}
-        run: |
-              ssh ${{ secrets.AWS_SSH_KEY }} ubuntu@ec2-3-12-136-199.us-east-2.compute.amazonaws.com
+
+    - name: Connect SHH
+      run: ssh -i { secrets.AWS_SSH_KEY } ubuntu@ec2-3-12-136-199.us-east-2.compute.amazonaws.com
+      
     
+ 
