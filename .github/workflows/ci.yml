@@ -17,6 +17,5 @@ jobs:
             HOSTNAME: ${{secrets.ASW_HOST_DNS}}
             USER_NAME: ${{secrets.USERNAME}}
         run: |
-              echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
               ssh ${{ secrets.AWS_SSH_KEY }} ubuntu@ec2-3-12-136-199.us-east-2.compute.amazonaws.com
     
