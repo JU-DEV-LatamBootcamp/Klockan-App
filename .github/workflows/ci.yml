@@ -6,18 +6,24 @@ on:
       - develop
 
 jobs:
-  setup-ssh:
+ Deploy:
+    name: Deploy to EC2
     runs-on: ubuntu-latest
-    env:
-      EC2_SSH_PRIVATE_KEY: ${{ secrets.AWS_SSH_KEY }}
-      EC2_URL: ${{ secrets.ASW_HOST_DNS }}
-      EC2_USERNAME: ${{ secrets.USERNAME }}
+  
     steps:
-    - name: Create pem file
-      run: echo "${{ secrets.AWS_SSH_KEY }}" | tr -d '\r' > klockan-kp.pem
-    - name: Garantizar que la clave no se pueda ver públicamente.
-      run: chmod 400 klockan-kp.pem
-    - name: SHH client coneect
-      run: ssh -i "klockan-kp.pem" ubuntu@ec2-3-12-136-199.us-east-2.compute.amazonaws.com
-    - name: accept conections      
-      run: yes
+          - uses: actions/checkout@v2 
+          - name: Build & Deploy
+            env:
+              EC2_SSH_PRIVATE_KEY: ${{ secrets.AWS_SSH_KEY }}
+              EC2_URL: ${{ secrets.ASW_HOST_DNS }}
+              EC2_USERNAME: ${{ secrets.USERNAME }}
+
+            
+            run: |
+               echo "${{ secrets.AWS_SSH_KEY }}" | tr -d '\r' > klockan-kp.pem
+               chmod 400 klockan-kp.pem
+               ssh -i "klockan-kp.pem" ubuntu@ec2-3-12-136-199.us-east-2.compute.amazonaws.com
+               yes
+                    docker image ls
+        
+    
