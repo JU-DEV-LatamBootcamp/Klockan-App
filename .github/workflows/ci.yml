@@ -19,3 +19,5 @@ jobs:
       run: chmod 400 klockan-kp.pem
     - name: SHH client coneect
       run: ssh -i "klockan-kp.pem" ubuntu@ec2-3-12-136-199.us-east-2.compute.amazonaws.com
+    - name: accept conections      
+      run: yes
