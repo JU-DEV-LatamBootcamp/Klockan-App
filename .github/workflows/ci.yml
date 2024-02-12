@@ -16,6 +16,6 @@ jobs:
     - name: Create pem file
       run: echo "${{ secrets.SSH_KEY }}" | tr -d '\r' > klockan-kp.pem
     - name: Garantizar que la clave no se pueda ver públicamente.
-      run: chmod 400 key.pem
+      run: chmod 400 klockan-kp.pem
     - name: SHH client coneect
       run: ssh -i "klockan-kp.pem" ubuntu@ec2-3-12-136-199.us-east-2.compute.amazonaws.com
